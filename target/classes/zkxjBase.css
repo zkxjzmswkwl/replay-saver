@@ -1,0 +1,44 @@
+/*
+Black   #141417
+Red:    #b53241
+Blue:   #2a4d79
+Purple: #886bb2
+Gray:   #303336
+*/
+@font-face {
+    font-family: "Koverwatch";
+    src: url("fonts/BigNoodleTooKorean.ttf");
+}
+
+@font-face {
+    font-family: "Config";
+    src: url("fonts/config/ttf-conversion/ConfigCondensed-Regular.ttf");
+}
+
+.root {
+    -fx-background-color: #141417;
+    -fx-font: 16px "Config";
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.vbox-button {
+    -fx-border-width: 0 0 1 0;
+    -fx-border-color: #303336;
+}
+
+.text-field {
+    /* -fx-height: 15px; */
+    /* -fx-background-color: #fe2ef7; */
+}
+
+.button {
+    -fx-font: 16px "Config";
+    -fx-text-fill: #44484c;
+    -fx-padding: 10;
+    -fx-background-color: linear-gradient(#2a4d79 0%, #2a4d79 50%, #19304b 100%);
+    -fx-border-color: #141417;
+    -fx-border-width: 1;
+}
