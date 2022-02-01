@@ -3,6 +3,7 @@ package software.carter;
 import javax.lang.model.util.Elements;
 
 import org.apache.log4j.net.SyslogAppender;
+import org.opencv.core.Core;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -13,13 +14,17 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Control;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import software.carter.overwatch.Overwatch;
 
 public class Main extends Application {
 
@@ -27,6 +32,8 @@ public class Main extends Application {
     Button settingsBtn = new Button("Settings");
     Button aboutBtn = new Button("About");
     TextField playerName = new TextField();
+    RadioButton saveLog = new RadioButton("Output JSON log");
+    RadioButton saveAllPovs = new RadioButton("Record all perspectives");
     Label headerLabel = new Label("Overwatch Replay Tool");
     Label testLabel = new Label("Player Name");
 
@@ -81,18 +88,19 @@ public class Main extends Application {
         return gridPane;
     }
 
-
     @Override
     public void start(Stage stage) throws Exception {
+        System.loadLibrary(Core.NATIVE_LIBRARY_NAME);
+
         btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent arg0) {
-                System.out.println("A");
+                System.out.println(Overwatch.getSpecPosition("Oppenheimer"));
             }
         });
         BorderPane root = new BorderPane();
         HBox topBar = addHBox(headerLabel);
-        GridPane grid = addGridPane(testLabel, playerName);
+        GridPane grid = addGridPane(testLabel, playerName, saveLog, saveAllPovs, btn, Imaging.imageView);
         // VBox leftBar = addVBox(settingsBtn, aboutBtn);
         root.setTop(topBar);
         root.setCenter(grid);

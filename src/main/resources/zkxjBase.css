@@ -18,6 +18,11 @@ Gray:   #303336
 .root {
     -fx-background-color: #141417;
     -fx-font: 16px "Config";
+    -fx-text-fill: white;
+}
+
+.radio-button {
+    -fx-text-fill: white;
 }
 
 .label {
